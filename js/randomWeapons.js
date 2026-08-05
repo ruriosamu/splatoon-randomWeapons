@@ -622,22 +622,22 @@ const weapons = [
     },
     {
         name: "ノーチラス47",
-        image: "Spinner/kugehhyu-.png",
+        image: "Spinner/noti47.png",
         type: "スピナー"
     },
     {
         name: "ノーチラス79",
-        image: "Spinner/kugehhyu-.png",
+        image: "Spinner/noti79.png",
         type: "スピナー"
     },
     {
         name: "イグザミナー",
-        image: "Spinner/kugehhyu-.png",
+        image: "Spinner/zami.png",
         type: "スピナー"
     },
     {
         name: "イグザミナー・ヒュー",
-        image: "Spinner/kugehhyu-.png",
+        image: "Spinner/zamihyu-.png",
         type: "スピナー"
     },
     /* マニューバー */
