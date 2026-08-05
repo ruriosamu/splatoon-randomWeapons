@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>スプラトゥーン3 ランダム武器</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/randomWeapons.js"></script>
+</head>
+
+<body>
+
+	<div class="container">
+		<h1>スプラトゥーン3 ランダム武器</h1>
+		
+		<label for="weaponType">武器種：</label>
+		<select id="weaponType">
+		    <option value="全種">全種</option>
+		    <option value="シューター">シューター</option>
+		    <option value="ブラスター">ブラスター</option>
+		    <option value="ローラー">ローラー</option>
+		    <option value="チャージャー">チャージャー</option>
+		    <option value="スロッシャー">スロッシャー</option>
+		    <option value="スピナー">スピナー</option>
+		    <option value="マニューバー">マニューバー</option>
+		    <option value="シェルター">シェルター</option>
+		    <option value="弓">弓</option>
+		    <option value="ワイパー">ワイパー</option>
+		</select>
+
+		<img id="weaponImage">
+		
+		<div id="weapon">ボタンを押下</div>
+
+		<button onclick="randomWeapon()">武器抽選ボタン</button>
+	</div>
+
+</body>
+
+</html>
