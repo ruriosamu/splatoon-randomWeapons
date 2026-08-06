@@ -90,11 +90,7 @@ h1 {
 	background: #ebebeb;
 }
 
-.weaponList {
-/*	display: grid;*/
-/*	grid-template-columns: repeat(auto-fit,minmax(160px,1fr));*/
-/*	gap: 4px;*/
-	
+.weaponList {	
 	max-height: 300px;
 	overflow-y: auto;
 	grid-template-columns: repeat(2, 250px);
@@ -105,6 +101,18 @@ h1 {
     .weaponList{
         grid-template-columns: 1fr;
     }
+	
+	.weaponItem{
+		display: flex;
+		justify-content: center;
+	}
+	
+	.weaponItem label{
+		width: 250px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
 }
 
 .weaponItem {
