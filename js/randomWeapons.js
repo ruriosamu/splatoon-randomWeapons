@@ -806,8 +806,8 @@ const weapons = [
         name: "クーゲルシュライバー",
         image: "Spinner/kuge.png",
         type: "スピナー",
-		sub: "ジェットパック",
-		special: "タンサンボム"
+		sub: "タンサンボム",
+		special: "ジェットパック"
     },
     {
         name: "クーゲルシュライバー・ヒュー",
