@@ -73,6 +73,17 @@ h1 {
 	display: none;
 }
 
+#weaponInfo{
+	margin-bottom: 15px;
+	text-align: left;
+	display: inline-block;
+}
+
+#weaponInfo p{
+	margin: 6px 0;
+	font-size: 18px;
+}
+
 .typeHeader {
 	display: flex;
 	align-items: center;
