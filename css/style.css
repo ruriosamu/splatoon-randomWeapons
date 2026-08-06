@@ -12,7 +12,7 @@ body {
 }
 
 /* コンテナ要素 */
-.container {
+.container{
 	width: 90%;
 	max-width: 700px;
 	background-color: #FFF;
@@ -47,26 +47,23 @@ h1 {
 }
 
 /* 武器画像 */
-#weaponImage {
+#weaponImage{
 	width: 250px;
 	height: auto;
 	display: block;
 	margin: 20px auto;
 }
 
-#toggleExclude {
-	width: 60%;
+#toggleExclude{
+	width: 100%;
 	margin: 10px 0;
-	background-color: lightslategray;
 }
 
-#weaponSelectArea {
-	max-height: 60vh;
-	overflow-y: auto;
+#weaponSelectArea{
 	display: none;
 }
 
-.typeHeader {
+.typeHeader{
 	display: flex;
 	align-items: center;
 	gap: 8px;
@@ -75,19 +72,11 @@ h1 {
 	margin-top: 10px;
 }
 
-.weaponList {
-	max-height: 300px;
-	overflow-y: auto;
-	grid-template-columns: repeat(2, 250px);
-	justify-content: center;
-	gap: 4px 16px;
+.weaponList{
+	margin-left: 20px;
 }
 
-.weaponItem {
-	text-align: left;
-}
-
-.toggle {
+.toggle{
 	width: 16px;
 	text-align: center;
 	font-weight: bold;
@@ -112,11 +101,4 @@ button:hover {
 
 button:active {
 	background: #000;
-}
-
-.bulkActions button {
-    width: auto !important;
-    height: auto !important;
-	font-size: 12px !important;
-	padding: 3px 8px !important;
 }
