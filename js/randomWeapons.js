@@ -851,19 +851,11 @@ const weapons = [
     },
 ];
 
-let previousWeapon = null;
+let weaponHistory = [];
 
+//武器抽選
 function randomWeapon() {
-    //武器種
-    const type = document.getElementById("weaponType").value;
-    let candidates;
-
-    //武器種が全種ならすべてを、それ以外なら各種類のみを排出
-    if (type === "全種") {
-        candidates = weapons;
-    } else {
-        candidates = weapons.filter(weapon => weapon.type === type);
-    }
+    let candidates = weapons;
 
     // チェックされている武器名を取得
     const checkedWeapons = [...document.querySelectorAll(".weaponCheckbox:checked")]
@@ -882,15 +874,22 @@ function randomWeapon() {
     //武器の選出
     let selectedWeapon;
 
-    //被りチェック	
-    do {
-        selectedWeapon = candidates[Math.floor(Math.random() * candidates.length)];
-    } while (candidates.length > 1 &&
-    previousWeapon !== null &&
-        selectedWeapon.name === previousWeapon.name);
+    //直近10回に出た武器を除外
+	const availableCandidates = candidates.filter(weapon => !weaponHistory.includes(weapon.name));
+	
+	//全武器が10以下なら履歴無視
+	const pool = availableCandidates.length > 0
+		? availableCandidates
+		: candidates;
+	
+	//抽選	
+	selectedWeapon = pool[Math.floor(Math.random()* pool.length)];
 
-    //今回の武器を保存
-    previousWeapon = selectedWeapon;
+    //履歴保存
+	weaponHistory.push(selectedWeapon.name);
+	if(weaponHistory.length > 10){
+		weaponHistory.shift();
+	}
 
     //武器
     document.getElementById("weapon").textContent = selectedWeapon.name;
@@ -903,7 +902,12 @@ function randomWeapon() {
 function createWeaponList() {
 
     const area = document.getElementById("weaponSelectArea");
-    area.innerHTML = "";
+    area.innerHTML = `
+		<div class="bulkActions">
+			<button id="selectAllWeapons">全選択</button>
+			<button id="deselectAllWeapons">全解除</button>
+		</div>
+	`;
 
     //武器種ごとにまとめる
     const weaponTypes = {};
@@ -923,11 +927,12 @@ function createWeaponList() {
 
         const weaponList = document.createElement("div");
         weaponList.className = "weaponList";
+        weaponList.style.display = "none";
 
         //親要素
         typeDiv.innerHTML = `
 		<div class="typeHeader">
-        	<span class="toggle">▼</span>    
+        	<span class="toggle">▶</span>    
 			
 			<label>
                 <input
@@ -962,6 +967,21 @@ function createWeaponList() {
         typeDiv.appendChild(weaponList);
         area.appendChild(typeDiv);
     }
+	
+	//全選択
+	document.getElementById("selectAllWeapons").addEventListener("click", () => {
+		document.querySelectorAll(".typeCheckbox, .weaponCheckbox").forEach(box => {
+			box.checked = true;
+			box.indeterminate = false;
+		});
+	});
+	//全解除
+	document.getElementById("deselectAllWeapons").addEventListener("click", () => {
+		document.querySelectorAll(".typeCheckbox, .weaponCheckbox").forEach(box => {
+			box.checked = false;
+			box.indeterminate = false;
+		});
+	});
 }
 
 document.addEventListener("change", function(e) {
@@ -1005,38 +1025,42 @@ document.addEventListener("change", function(e) {
     }
 });
 
-const toggleButton = document.getElementById("toggleExclude");
-const weaponArea = document.getElementById("weaponSelectArea");
-
-toggleButton.addEventListener("click", function() {
-    if (weaponArea.style.display === "none") {
-        weaponArea.style.display = "block";
-        toggle.textContent = "▲ 除外設定";
-    } else {
-        weaponArea.style.display = "none";
-        toggle.textContent = "▼ 除外設定";
-    }
-
-})
 
 //チェックリストの開閉
-document.addEventListener("click",function(e){
-	if(e.target.closest(".typeHeader")){
-		const header = e.target.closest(".typeHeader");
-		const weaponList = header.parentElement.querySelector(".weaponList");
-		const toggle = header.parentElement.querySelector(".toggle");
-		
-		if(weaponList.style.display === "none"){
-			weaponList.style.display = "block";
-			toggle.textContent = "▼";
-		}else{
-			weaponList.style.display = "none";
-			toggle.textContent = "▶";
-		}
-	}
+document.addEventListener("click", function(e) {
+
+    if (!e.target.classList.contains("toggle")) {
+        return;
+    }
+
+    const header = e.target.closest(".typeHeader");
+    const weaponList = header.parentElement.querySelector(".weaponList");
+    const toggle = e.target;
+
+    if (getComputedStyle(weaponList).display === "none") {
+        weaponList.style.display = "grid";
+        toggle.textContent = "▼";
+    } else {
+        weaponList.style.display = "none";
+        toggle.textContent = "▶";
+    }
 });
 
 //チェックリスト呼び出し
 window.onload = function() {
     createWeaponList();
+
+    //親チェックリストの開閉
+    const toggleButton = document.getElementById("toggleExclude");
+    const weaponArea = document.getElementById("weaponSelectArea");
+
+    toggleButton.addEventListener("click", function() {
+        if (weaponArea.style.display === "none" || weaponArea.style.display === "") {
+            weaponArea.style.display = "block";
+            toggleButton.textContent = "▲ 除外設定";
+        } else {
+            weaponArea.style.display = "none";
+            toggleButton.textContent = "▼ 除外設定";
+        }
+    });
 };
