@@ -1057,10 +1057,10 @@ window.onload = function() {
     toggleButton.addEventListener("click", function() {
         if (weaponArea.style.display === "none" || weaponArea.style.display === "") {
             weaponArea.style.display = "block";
-            toggleButton.textContent = "▲ 除外設定";
+            toggleButton.textContent = "▲ 抽選対象武器選択";
         } else {
             weaponArea.style.display = "none";
-            toggleButton.textContent = "▼ 除外設定";
+            toggleButton.textContent = "▼ 抽選対象武器選択";
         }
     });
 };
