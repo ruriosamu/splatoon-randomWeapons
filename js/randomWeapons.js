@@ -49,7 +49,7 @@ const weapons = [
     },
     {
         name: "プロモデラーRG",
-        image: "Shooter/momiji.png",
+        image: "Shooter/gold.png",
         type: "シューター",
         sub: "スプリンクラー",
         special: "ナイスダマ"
