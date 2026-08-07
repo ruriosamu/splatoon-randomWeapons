@@ -7,7 +7,7 @@ body {
 	font-family: "Yu Gothic", sans-serif;
 	display: flex;
 	justify-content: center;
-	
+
 	align-items: flex-start;
 	min-height: 100vh;
 	padding: 20px 0;
@@ -16,7 +16,7 @@ body {
 /* コンテナ要素 */
 .container {
 	margin: 20px auto;
-	
+
 	width: 90%;
 	max-width: 700px;
 	background-color: #FFF;
@@ -61,25 +61,50 @@ h1 {
 	margin: 20px auto;
 }
 
-#toggleExclude {
+/* 選択ボタン */
+.toggleButton {
 	width: 60%;
 	margin: 10px 0;
 	background-color: #6b7280;
 }
 
-#weaponSelectArea {
-	max-height: 60vh;
-	overflow-y: auto;
+/* 開閉 */
+.selectArea {
 	display: none;
 }
 
-#weaponInfo{
+.checkGrid{
+	display: grid;
+	grid-template-columns: repeat(2,250px);
+	justify-content: center;
+	gap: 8px 16px;
+	margin-top: 10px;
+}
+.weaponType>.checkGrid{
+	display: none;
+}
+
+/* リストの中身 */
+.checkItem {
+	text-align: left;
+}
+.checkList{
+	display: flex;
+	flex-direction: column;
+}
+
+/* 武器種の中身 */
+.weaponType{
+	margin-bottom: 8px;
+}
+
+#weaponInfo {
 	margin-bottom: 15px;
 	text-align: left;
 	display: inline-block;
 }
 
-#weaponInfo p{
+#weaponInfo p {
 	margin: 6px 0;
 	font-size: 18px;
 }
@@ -97,28 +122,24 @@ h1 {
 	padding: 8px 10px;
 }
 
-.typeHeader:hover{
+.typeHeader:hover {
 	background: #ebebeb;
 }
 
-.weaponList {	
-	max-height: 300px;
-	overflow-y: auto;
-	grid-template-columns: repeat(2, 250px);
-	justify-content: center;
-	gap: 4px 16px;
-}
-@media (max-width: 768px){
-    .weaponList{
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 768px) {
+	.weaponList {
+		grid-template-columns: 1fr;
+	}
+	.checkGrid{
+		grid-template-columns: 1fr;
+	}
 	
-	.weaponItem{
+	.checkItem {
 		display: flex;
 		justify-content: center;
 	}
-	
-	.weaponItem label{
+
+	.checkItem label {
 		width: 250px;
 		display: flex;
 		align-items: center;
@@ -126,7 +147,7 @@ h1 {
 	}
 }
 
-.weaponItem {
+.checkItem {
 	text-align: left;
 }
 
@@ -159,8 +180,8 @@ button:active {
 }
 
 .bulkActions button {
-    width: auto !important;
-    height: auto !important;
+	width: auto !important;
+	height: auto !important;
 	font-size: 12px !important;
 	padding: 8px 13px !important;
 }

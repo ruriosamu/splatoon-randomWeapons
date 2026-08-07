@@ -17,20 +17,41 @@
 		<img id="weaponImage">
 
 		<div id="weapon">ボタンを押下</div>
-		
+
 		<div id="weaponInfo">
-		    <p><strong>サブ：</strong><span id="subWeapon">-</span></p>
-		    <p><strong>スペシャル：</strong><span id="specialWeapon">-</span></p>
+			<p><strong>サブ：</strong><span id="subWeapon">-</span></p>
+			<p><strong>スペシャル：</strong><span id="specialWeapon">-</span></p>
 		</div><br>
 
-		<button onclick="randomWeapon()">武器抽選ボタン</button>
+		<button onclick="randomWeapon()" style="margin-bottom: 10px;">武器抽選ボタン</button>
 
 		<div id="excludeArea">
-			<button type="button" id="toggleExclude">
-				▼ 抽選対象武器選択
-			</button>
+			<button id="toggleExclude" class="toggleButton">▼ 武器選択</button>
+			<div id="weaponSelectArea" class="selectArea">
+				<div class="bulkActions">
+					<button id="selectAllWeapons">全選択</button>
+					<button id="deselectAllWeapons">全解除</button>
+				</div>
+				<div id="weaponListArea" class="checkList"></div>
+			</div>
 
-			<div id="weaponSelectArea"></div>
+			<button id="toggleSub" class="toggleButton">▼ サブ選択</button>
+			<div id="subSelectArea" class="selectArea">
+				<div class="bulkActions">
+					<button id="selectAllSubs">全選択</button>
+					<button id="deselectAllSubs">全解除</button>
+				</div>
+				<div id="subListArea" class="checkGrid"></div>
+			</div>
+
+			<button id="toggleSpecial" class="toggleButton">▼ スペシャル選択</button>
+			<div id="specialSelectArea" class="selectArea">
+				<div class="bulkActions">
+					<button id="selectAllSpecials">全選択</button>
+					<button id="deselectAllSpecials">全解除</button>
+				</div>
+				<div id="specialListArea" class="checkGrid"></div>
+			</div>
 		</div>
 	</div>
 
